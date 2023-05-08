@@ -12,6 +12,7 @@ class warp_cli():
             os.system('warp-cli connect')
             self.is_connected.set('Disconnect')
             self.is_connected_val = 1
+            
     def install(self):
         os.system('sudo apt install cloudflare-warp -y')
         os.system('sudo yum install cloudflare-warp -y')

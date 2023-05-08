@@ -1,0 +1,21 @@
+name: CloudFlare-Warp-Gui
+summary: A gui for cloudflare warp for linux
+description: |
+  A gui for cloudflare warp using python, tkinter, and os for controling warp
+version: git
+grade: stable
+confinement: devmode
+base: core20
+architectures:
+  - build-on: [amd64]
+
+apps:
+  Cloudflare-Warp-CLI-GUI:
+    command: bin/Cloudflare-Warp-CLI-GUI
+    plugs: [home, network, network-bind]
+
+parts:
+  Cloudflare-Warp-CLI-GUI:
+    plugin: python
+    source: https://github.com/airplaneboy14mc/Cloudflare-Warp-CLI-GUI.git
+    

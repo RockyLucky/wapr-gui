@@ -1,39 +1,41 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
-name: Python application
+name: Build and Package
 
 on:
   push:
-    branches: [ "Main" ]
-  pull_request:
-    branches: [ "Main" ]
-
-permissions:
-  contents: read
+    branches:
+      - main
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install build dependencies
+      run: sudo apt-get update && sudo apt-get install -y build-essential python3-dev python3-wheel dh-python
+
+    - name: Set up Python environment
+      uses: actions/setup-python@v2
       with:
-        python-version: "3.10"
-    - name: Install dependencies
+        python-version: '3.9'
+
+    - name: Install Python dependencies
+      run: pip install -r requirements.txt
+
+    - name: Build package
       run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
-      run: |
-        pytest
+        VERSION=$(git describe --tags --abbrev=0)
+        PACKAGE_NAME="cloudflare-warp-cli-gui_${VERSION}_all"
+        python3 setup.py bdist_wheel
+        mkdir "$PACKAGE_NAME"
+        cp dist/*.whl "$PACKAGE_NAME"
+        dpkg-deb --build "$PACKAGE_NAME"
+        mv "$PACKAGE_NAME".deb "cloudflare-warp-cli-gui_${VERSION}_all.deb"
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: cloudflare-warp-cli-gui.deb
+        path: cloudflare-warp-cli-gui_*.deb

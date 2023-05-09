@@ -1,0 +1,9 @@
+Package: cloudflare-warp-cli-gui
+Version: 1.0.1
+Architecture: all
+Maintainer: airplaneboy14mc <youremail@example.com>
+Depends: python3 (>= 3.6), python3-pip (>= 9.0), python3-tk
+Section: main
+Priority: optional
+Description: Cloudflare Warp CLI GUI package
+ A GUI to control the Cloudflare Warp CLI.

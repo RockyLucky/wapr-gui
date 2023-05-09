@@ -1,5 +1,5 @@
 Package: Cloudflare-Warp-CLI-GUI
-Version: 1.0
+Version: 1.01
 Architecture: all
 Maintainer: RockyLucky
 Description: My awesome Python Tkinter GUI application.

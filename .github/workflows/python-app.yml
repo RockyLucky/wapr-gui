@@ -22,7 +22,7 @@ jobs:
         python-version: '3.9'
 
     - name: Install Python dependencies
-      run: pip install wheel -y
+      run: pip install wheel
 
     - name: Get latest tag
       id: get_latest_tag

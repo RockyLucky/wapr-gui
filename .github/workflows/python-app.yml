@@ -35,7 +35,7 @@ jobs:
     - name: Build package
       run: |
         VERSION=${{ steps.increment_tag.outputs.tag }}
-        PACKAGE_NAME="cloudflare-warp-cli-gui_${VERSION}_all"
+        PACKAGE_NAME="cloudflare-warp-cli-gui"
         python3 setup.py bdist_wheel
         rm -rf "$PACKAGE_NAME"
         mkdir "$PACKAGE_NAME"

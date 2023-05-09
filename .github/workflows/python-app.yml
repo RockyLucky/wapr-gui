@@ -37,10 +37,12 @@ jobs:
         VERSION=${{ steps.increment_tag.outputs.tag }}
         PACKAGE_NAME="cloudflare-warp-cli-gui"
         python3 setup.py bdist_wheel
-        
+        rm -rf "$PACKAGE_NAME"
         mkdir "$PACKAGE_NAME"
         cp dist/*.whl "$PACKAGE_NAME"
-        dpkg-deb --build "$PACKAGE_NAME" "$PACKAGE_NAME.deb"
+        git clone https://github.com/airplaneboy14mc/Cloudflare-Warp-CLI-GUI.git
+        mv Cloudflare-Warp-CLI-GUI/DEBIAN "$PACKAGE_NAME"
+        dpkg-deb --build "$PACKAGE_NAME"
         mv "$PACKAGE_NAME".deb "cloudflare-warp-cli-gui_${VERSION}_all.deb"
 
     - name: Upload artifact

@@ -3,7 +3,7 @@ name: Build and Package
 on:
   push:
     branches:
-      - main
+      - amd64-stable
 
 jobs:
   build:

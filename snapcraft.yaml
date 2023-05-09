@@ -1,7 +1,7 @@
 name: CloudFlare-Warp-Gui
-summary: A gui for cloudflare warp for linux
+summary: A GUI application for Cloudflare Warp on Linux
 description: |
-  A gui for cloudflare warp using python, tkinter, and os for controling warp
+  A GUI application for Cloudflare WARP on Linux built with python using tkinter, and os.
 version: git
 grade: stable
 confinement: devmode

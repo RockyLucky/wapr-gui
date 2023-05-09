@@ -21,8 +21,8 @@ jobs:
       with:
         python-version: '3.9'
 
-#    - name: Install Python dependencies
-#      run: pip install -r requirements.txt
+    - name: Install Python dependencies
+      run: pip install wheel -y
 
     - name: Get latest tag
       id: get_latest_tag

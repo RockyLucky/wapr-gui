@@ -18,4 +18,3 @@ parts:
   cloudflare-warp-cli-gui:
     plugin: python
     source: https://github.com/airplaneboy14mc/Cloudflare-Warp-CLI-GUI.git
-    

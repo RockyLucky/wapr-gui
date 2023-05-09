@@ -1,0 +1,7 @@
+Package: cloudflare-warp-cli-gui
+Version: 1
+Architecture: all
+Maintainer: John Doe <johndoe@example.com>
+Depends: python3, python3-wheel
+Description: Cloudflare Warp CLI GUI
+ A GUI interface for Cloudflare Warp CLI tool

@@ -1,0 +1,18 @@
+name: warpcli-connect-x64
+version: '1.0'
+summary: A GUI interface to connect/disconnect with Cloudflare WARP CLI for Linux x64
+description: |
+  This is a graphical user interface that allows you to easily connect and disconnect from the Cloudflare WARP CLI on Linux x64.
+grade: stable
+confinement: strict
+
+apps:
+  warpcli-connect-x64:
+    command: warpcli-connect-x64.py
+    plugs: [network, network-bind]
+
+parts:
+  warpcli-connect-x64:
+    plugin: python
+    python-version: python3
+    source: .
